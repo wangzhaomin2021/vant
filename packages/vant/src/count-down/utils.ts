@@ -1,6 +1,8 @@
+// @wzm preview 2022-12-16
 import { padZero } from '../utils';
 import { CurrentTime } from '@vant/use';
 
+// 格式化倒计时显示字符
 export function parseFormat(format: string, currentTime: CurrentTime): string {
   const { days } = currentTime;
   let { hours, minutes, seconds, milliseconds } = currentTime;
