@@ -1,3 +1,4 @@
+// @wzm preview 2022-12-16
 import {
   ref,
   watch,
@@ -61,12 +62,14 @@ export default defineComponent({
     const wrapRef = ref<HTMLElement>();
     const contentRef = ref<HTMLElement>();
 
+    // 状态
     const state = reactive({
       show: true,
       offset: 0,
       duration: 0,
     });
 
+    // 左图标 左图插槽 > 左图prop
     const renderLeftIcon = () => {
       if (slots['left-icon']) {
         return slots['left-icon']();
@@ -76,6 +79,7 @@ export default defineComponent({
       }
     };
 
+    // 右图标名
     const getRightIconName = () => {
       if (props.mode === 'closeable') {
         return 'cross';
@@ -85,6 +89,7 @@ export default defineComponent({
       }
     };
 
+    // 点击右图标事件  关闭图标执行关闭逻辑
     const onClickRightIcon = (event: MouseEvent) => {
       if (props.mode === 'closeable') {
         state.show = false;
@@ -92,6 +97,7 @@ export default defineComponent({
       }
     };
 
+    // 获取右图标 右图标插槽 > 右图标prop
     const renderRightIcon = () => {
       if (slots['right-icon']) {
         return slots['right-icon']();
@@ -125,6 +131,7 @@ export default defineComponent({
       });
     };
 
+    // 移动字幕
     const renderMarquee = () => {
       const ellipsis = props.scrollable === false && !props.wrapable;
       const style = {
